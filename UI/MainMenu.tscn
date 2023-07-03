@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxnfq142t1dj3"]
+
+[ext_resource type="Texture2D" uid="uid://b2vd44biho8o0" path="res://UI/PlayButton.png" id="1_4y46t"]
+[ext_resource type="Script" path="res://UI/MainMenu.gd" id="1_doq5t"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_doq5t")
+
+[node name="PlayButton" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -435.0
+offset_right = 435.0
+offset_bottom = 435.0
+grow_horizontal = 2
+texture_normal = ExtResource("1_4y46t")
+stretch_mode = 0
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
