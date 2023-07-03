@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxnfq142t1dj3"]
+[gd_scene load_steps=7 format=3 uid="uid://dxnfq142t1dj3"]
 
-[ext_resource type="Texture2D" uid="uid://b2vd44biho8o0" path="res://UI/PlayButton.png" id="1_4y46t"]
 [ext_resource type="Script" path="res://UI/MainMenu.gd" id="1_doq5t"]
+[ext_resource type="Texture2D" uid="uid://coy0qk5887785" path="res://UI/Background.png" id="2_qbpw3"]
+[ext_resource type="Texture2D" uid="uid://6beadx6pa51s" path="res://UI/NewGameB.png" id="3_2xmgg"]
+[ext_resource type="Texture2D" uid="uid://de4mrakbascnl" path="res://UI/HighScoreB.png" id="4_rch2b"]
+[ext_resource type="Texture2D" uid="uid://fj60jk3yl4gv" path="res://UI/QuitB.png" id="5_0jpfq"]
+[ext_resource type="Texture2D" uid="uid://cjdjkwns688tp" path="res://UI/OptionsB.png" id="6_ehfnp"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -12,17 +16,80 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_doq5t")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -411.0
+offset_right = 1920.0
+offset_bottom = 1135.0
+texture = ExtResource("2_qbpw3")
+
 [node name="PlayButton" type="TextureButton" parent="."]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -435.0
+offset_top = -525.0
 offset_right = 435.0
-offset_bottom = 435.0
+offset_bottom = -90.0
 grow_horizontal = 2
-texture_normal = ExtResource("1_4y46t")
+grow_vertical = 2
+texture_normal = ExtResource("3_2xmgg")
+stretch_mode = 0
+
+[node name="TextureButton" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -390.5
+offset_top = -162.0
+offset_right = 390.5
+offset_bottom = 229.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("4_rch2b")
+stretch_mode = 0
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -390.5
+offset_top = 138.0
+offset_right = 390.5
+offset_bottom = 529.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("5_0jpfq")
+stretch_mode = 0
+
+[node name="TextureButton3" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -943.0
+offset_top = -528.0
+offset_right = -579.0
+offset_bottom = -346.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_ehfnp")
 stretch_mode = 0
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
