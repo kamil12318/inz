@@ -41,7 +41,7 @@ grow_vertical = 2
 texture_normal = ExtResource("3_2xmgg")
 stretch_mode = 0
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="HighScoreButton" type="TextureButton" parent="."]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -58,7 +58,7 @@ grow_vertical = 2
 texture_normal = ExtResource("4_rch2b")
 stretch_mode = 0
 
-[node name="TextureButton2" type="TextureButton" parent="."]
+[node name="QuitButton" type="TextureButton" parent="."]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -75,7 +75,7 @@ grow_vertical = 2
 texture_normal = ExtResource("5_0jpfq")
 stretch_mode = 0
 
-[node name="TextureButton3" type="TextureButton" parent="."]
+[node name="OptionButton" type="TextureButton" parent="."]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -93,3 +93,4 @@ texture_normal = ExtResource("6_ehfnp")
 stretch_mode = 0
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

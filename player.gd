@@ -13,7 +13,6 @@ var can_fire = true
 
 
 
-
 func _process(delta):
 	
 	GlobalVar.playerpositionx = position.x
