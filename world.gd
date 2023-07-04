@@ -6,13 +6,15 @@ const SPAWN_RADIUS = 1300
 var enemy_scene = preload("res://Enemy.gd")
 @onready var timer = get_node("SpawnTimer")
 
-var points = GlobalVar.playerscore
 
+
+func _process(delta):
+	timer.wait_time = GlobalVar.spawntimer
 
 
 func _ready():
-	timer.wait_time = GlobalVar.spawntimer
 	GlobalVar.playerscore = 0
+	GlobalVar.spawntimer = 1
 	
 func spawn_enemy():
 	var enemy = load("res://enemy.tscn").instantiate()

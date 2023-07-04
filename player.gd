@@ -6,9 +6,9 @@ var ACCELERATION = 800
 var FRICTION = 800
 
 var bullet = preload("res://Bullet.tscn")
-var speed = 200
-var bullet_speed = 1500
-var fire_rate = 0.5
+var speed = 500
+var bullet_speed = 1000
+var fire_rate = 0.3
 var can_fire = true
 
 
