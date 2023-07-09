@@ -58,4 +58,5 @@ func _physics_process(delta):
 
 func _on_player_hurtbox_area_entered(area):
 	get_tree().change_scene_to_file("res://UI/GameOverUI.tscn")
+	set_process(false)
 	queue_free()

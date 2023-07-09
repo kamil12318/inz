@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxnfq142t1dj3"]
+[gd_scene load_steps=8 format=3 uid="uid://dxnfq142t1dj3"]
 
 [ext_resource type="Script" path="res://UI/MainMenu.gd" id="1_doq5t"]
 [ext_resource type="Texture2D" uid="uid://coy0qk5887785" path="res://UI/Background.png" id="2_qbpw3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://de4mrakbascnl" path="res://UI/HighScoreB.png" id="4_rch2b"]
 [ext_resource type="Texture2D" uid="uid://fj60jk3yl4gv" path="res://UI/QuitB.png" id="5_0jpfq"]
 [ext_resource type="Texture2D" uid="uid://cjdjkwns688tp" path="res://UI/OptionsB.png" id="6_ehfnp"]
+[ext_resource type="PackedScene" uid="uid://bwy1fo6n3kiu0" path="res://Scenes/saver.tscn" id="7_yok5q"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -17,6 +18,7 @@ grow_vertical = 2
 script = ExtResource("1_doq5t")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
 layout_mode = 0
 offset_left = 1.0
 offset_top = -411.0
@@ -92,5 +94,9 @@ grow_vertical = 2
 texture_normal = ExtResource("6_ehfnp")
 stretch_mode = 0
 
+[node name="Saver" parent="." instance=ExtResource("7_yok5q")]
+position = Vector2(178, 444)
+
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="OptionButton" to="." method="_on_option_button_pressed"]

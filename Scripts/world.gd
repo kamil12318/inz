@@ -21,8 +21,11 @@ func _process(delta):
 
 
 func _ready():
-	GlobalVar.playerscore = 0
-	GlobalVar.spawntimer = 1
+	if GlobalVar.onload == 0:
+		GlobalVar.playerscore = 0
+	
+	GlobalVar.spawntimer = 0.2
+	
 	
 func spawn_enemy():
 	var enemy = load("res://Scenes/enemy.tscn").instantiate()
@@ -38,3 +41,4 @@ func rand_range(min, max):
 	
 func _on_timer_timeout():
 	spawn_enemy()
+	

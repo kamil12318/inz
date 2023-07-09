@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://5x3bamuwabno"]
+[gd_scene load_steps=13 format=3 uid="uid://5x3bamuwabno"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_6xof0"]
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_vuecb"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://qjxom07dcgs0" path="res://Scenes/player.tscn" id="5_dhja4"]
 [ext_resource type="Texture2D" uid="uid://ddq5mfoof2hge" path="res://Sprites/trawa.png" id="6_mtyge"]
 [ext_resource type="Texture2D" uid="uid://bhvvom8c3cjo7" path="res://Sprites/trawa2.png" id="7_t0ait"]
+[ext_resource type="PackedScene" uid="uid://bwy1fo6n3kiu0" path="res://Scenes/saver.tscn" id="8_g46e7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iq3r7"]
 texture = ExtResource("6_mtyge")
@@ -51,7 +52,7 @@ func rand_range(min, max):
 	return randf_range(min, max)
 "
 
-[node name="world" type="Node2D"]
+[node name="world" type="Node2D" groups=["Persist"]]
 script = ExtResource("1_6xof0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -99,5 +100,8 @@ layer_0/tile_data = PackedInt32Array(-196611, 1, 0, -196612, 1, 0, -196613, 1, 0
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 2.0
 script = SubResource("GDScript_33lrf")
+
+[node name="Saver" parent="." instance=ExtResource("8_g46e7")]
+position = Vector2(-512, -102)
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]

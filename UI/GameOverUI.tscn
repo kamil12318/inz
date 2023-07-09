@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://vmf2csmu0r2w"]
+[gd_scene load_steps=7 format=3 uid="uid://vmf2csmu0r2w"]
 
 [ext_resource type="Script" path="res://UI/GameOverUI.gd" id="1_owx4j"]
 [ext_resource type="Texture2D" uid="uid://coy0qk5887785" path="res://UI/Background.png" id="2_e7f42"]
 [ext_resource type="Script" path="res://UI/GameOverLabel.gd" id="2_vjqt7"]
 [ext_resource type="Texture2D" uid="uid://c1jh1pxg8jeav" path="res://UI/PlayAgainB.png" id="4_ed7ml"]
+[ext_resource type="PackedScene" uid="uid://bwy1fo6n3kiu0" path="res://Scenes/saver.tscn" id="5_thk6g"]
 
 [sub_resource type="Theme" id="Theme_xxkam"]
 
@@ -17,6 +18,7 @@ grow_vertical = 2
 script = ExtResource("1_owx4j")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
 layout_mode = 0
 offset_left = -2.0
 offset_top = -209.0
@@ -69,5 +71,8 @@ grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("4_ed7ml")
 stretch_mode = 0
+
+[node name="Saver" parent="." instance=ExtResource("5_thk6g")]
+position = Vector2(401, 964)
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
