@@ -1,6 +1,5 @@
 extends Node
 
-
 var playerscore = 0
 var playerpositionx = 0
 var playerpositiony = 0

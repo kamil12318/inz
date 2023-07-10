@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dxnfq142t1dj3"]
+[gd_scene load_steps=9 format=3 uid="uid://dxnfq142t1dj3"]
 
 [ext_resource type="Script" path="res://UI/MainMenu.gd" id="1_doq5t"]
 [ext_resource type="Texture2D" uid="uid://coy0qk5887785" path="res://UI/Background.png" id="2_qbpw3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://de4mrakbascnl" path="res://UI/HighScoreB.png" id="4_rch2b"]
 [ext_resource type="Texture2D" uid="uid://fj60jk3yl4gv" path="res://UI/QuitB.png" id="5_0jpfq"]
 [ext_resource type="Texture2D" uid="uid://cjdjkwns688tp" path="res://UI/OptionsB.png" id="6_ehfnp"]
+[ext_resource type="Texture2D" uid="uid://o5uw6h7p1pgb" path="res://UI/ContiuneButton.png" id="7_k2kd5"]
 [ext_resource type="PackedScene" uid="uid://bwy1fo6n3kiu0" path="res://Scenes/saver.tscn" id="7_yok5q"]
 
 [node name="Control" type="Control"]
@@ -34,14 +35,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -435.0
+offset_left = -308.0
 offset_top = -525.0
-offset_right = 435.0
-offset_bottom = -90.0
+offset_right = -180.0
+offset_bottom = -461.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(5, 5)
 texture_normal = ExtResource("3_2xmgg")
-stretch_mode = 0
 
 [node name="HighScoreButton" type="TextureButton" parent="."]
 texture_filter = 1
@@ -51,10 +52,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -390.5
-offset_top = -162.0
-offset_right = 390.5
-offset_bottom = 229.0
+offset_left = -334.0
+offset_top = -38.0
+offset_right = 337.0
+offset_bottom = 298.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("4_rch2b")
@@ -68,10 +69,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -390.5
-offset_top = 138.0
-offset_right = 390.5
-offset_bottom = 529.0
+offset_left = -318.0
+offset_top = 219.0
+offset_right = 315.0
+offset_bottom = 536.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("5_0jpfq")
@@ -94,9 +95,20 @@ grow_vertical = 2
 texture_normal = ExtResource("6_ehfnp")
 stretch_mode = 0
 
+[node name="ContiuneButton" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 588.0
+offset_top = 252.0
+offset_right = 1348.0
+offset_bottom = 590.0
+texture_normal = ExtResource("7_k2kd5")
+stretch_mode = 0
+
 [node name="Saver" parent="." instance=ExtResource("7_yok5q")]
 position = Vector2(178, 444)
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="OptionButton" to="." method="_on_option_button_pressed"]
+[connection signal="pressed" from="ContiuneButton" to="." method="_on_contiune_button_pressed"]

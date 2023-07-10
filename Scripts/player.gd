@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 var MAX_SPEED = 250
 var ACCELERATION = 800
 var FRICTION = 800
@@ -10,8 +9,6 @@ var speed = 500
 var bullet_speed = 1000
 var fire_rate = 0.3
 var can_fire = true
-
-
 
 func _process(delta):
 	
@@ -35,7 +32,6 @@ func _process(delta):
 		await (get_tree().create_timer(fire_rate).timeout)
 		can_fire = true
 		
-		
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -54,7 +50,6 @@ func _physics_process(delta):
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	move_and_slide()
-
 
 func _on_player_hurtbox_area_entered(area):
 	get_tree().change_scene_to_file("res://UI/GameOverUI.tscn")

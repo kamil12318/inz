@@ -15,8 +15,5 @@ func _physics_process(delta):
 		velocity = Vector2(target_position * speed)
 		move_and_slide()
 
-
 func _on_enemy_area_2d_area_entered(area):
-	
-	#przeciwnik umiera jakiś dead animacja 
 	queue_free()

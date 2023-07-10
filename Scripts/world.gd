@@ -1,31 +1,23 @@
 extends Node2D
 
-
 const SPAWN_RADIUS = 1300
 
 var enemy_scene = preload("res://Scripts/Enemy.gd")
 @onready var timer = get_node("SpawnTimer")
 
-
-
 func _process(delta):
 	timer.wait_time = GlobalVar.spawntimer
-	
 	
 	if Input.is_action_just_pressed("pause"):
 		get_tree().paused = true
 	else:
 		get_tree().paused = false
 	
-	
-
-
 func _ready():
 	if GlobalVar.onload == 0:
 		GlobalVar.playerscore = 0
 	
 	GlobalVar.spawntimer = 0.2
-	
 	
 func spawn_enemy():
 	var enemy = load("res://Scenes/enemy.tscn").instantiate()
@@ -41,4 +33,3 @@ func rand_range(min, max):
 	
 func _on_timer_timeout():
 	spawn_enemy()
-	

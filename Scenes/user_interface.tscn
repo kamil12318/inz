@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3v86sv0aylej"]
-
-[ext_resource type="PackedScene" uid="uid://c3v86sv0aylej" path="res://Scenes/user_interface.tscn" id="1_y5lju"]
-
-[node name="UserInterface" instance=ExtResource("1_y5lju")]

@@ -2,12 +2,10 @@ extends Node2D
 
 const SAVE_PATH := "res://test/score.json"
 
-
 func _process(delta):
 	if Input.is_action_just_pressed("save"):
 		save_json()
-	
-
+		
 func save_json() -> void:
 	var data := {
 		"playerscore": GlobalVar.playerscore,
@@ -20,7 +18,6 @@ func save_json() -> void:
 	file_access.store_line(json_data)
 	file_access.close()
 
-
 func load_json() -> void:
 	if not FileAccess.file_exists(SAVE_PATH):
 		return
@@ -30,5 +27,3 @@ func load_json() -> void:
 	var data: Dictionary = JSON.parse_string(json_data)
 	GlobalVar.playerscore = data.playerscore
 	GlobalVar.highscore = data.highscore
-	
-
