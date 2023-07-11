@@ -18,6 +18,7 @@ texture = ExtResource("2_fh8rn")
 hframes = 7
 
 [node name="PlayerHurtbox" type="Area2D" parent="."]
+collision_layer = 0
 collision_mask = 1024
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtbox"]

@@ -17,7 +17,8 @@ func _ready():
 	if GlobalVar.onload == 0:
 		GlobalVar.playerscore = 0
 	
-	GlobalVar.spawntimer = 0.2
+	GlobalVar.spawntimer = 1
+	GlobalVar.player_hp  = 5 
 	
 func spawn_enemy():
 	var enemy = load("res://Scenes/enemy.tscn").instantiate()

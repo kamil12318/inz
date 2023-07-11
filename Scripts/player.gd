@@ -10,17 +10,18 @@ var bullet_speed = 1000
 var fire_rate = 0.3
 var can_fire = true
 
+
 func _process(delta):
-	
+
 	GlobalVar.playerpositionx = position.x
 	GlobalVar.playerpositiony = position.y
 	GlobalVar.playerpositoin = position
-	
+
 	look_at(get_global_mouse_position())
 	var mouse_pos = get_global_mouse_position()
 	var cursor_positoin = Vector2(mouse_pos.x, mouse_pos.y)
 	var dir = Vector2(cos(rotation), sin(rotation))
-	
+
 	if Input.is_action_pressed("fire") and can_fire:
 		var bullet_instance = bullet.instantiate()
 		bullet_instance.position = get_global_position()
@@ -32,26 +33,32 @@ func _process(delta):
 		await (get_tree().create_timer(fire_rate).timeout)
 		can_fire = true
 		
+	if GlobalVar.player_hp == 0:
+		get_tree().change_scene_to_file("res://UI/GameOverUI.tscn")
+		set_process(false)
+		queue_free()
+		
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	input_vector = input_vector.normalized()
-	
+
 	if Input.is_action_just_pressed("run"):
-		MAX_SPEED = MAX_SPEED * 2 
+		MAX_SPEED = MAX_SPEED * 2
 		ACCELERATION = 800
 	if Input.is_action_just_released("run"):
 		MAX_SPEED = MAX_SPEED / 2
 		ACCELERATION = 500
-	
+
 	if input_vector != Vector2.ZERO:
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	move_and_slide()
 
+
 func _on_player_hurtbox_area_entered(area):
-	get_tree().change_scene_to_file("res://UI/GameOverUI.tscn")
-	set_process(false)
-	queue_free()
+	GlobalVar.player_hp -=1
+	print(GlobalVar.player_hp)
+

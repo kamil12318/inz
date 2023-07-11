@@ -5,6 +5,4 @@ func _process(delta):
 		GlobalVar.highscore = GlobalVar.playerscore
 		
 func _on_bullet_area_2d_area_entered(area):
-	GlobalVar.spawntimer /= 1.02
-	GlobalVar.playerscore += 1
 	queue_free()
