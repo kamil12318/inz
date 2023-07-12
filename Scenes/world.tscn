@@ -1,11 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://5x3bamuwabno"]
+[gd_scene load_steps=16 format=3 uid="uid://5x3bamuwabno"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_6xof0"]
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_vuecb"]
 [ext_resource type="FontFile" uid="uid://caraa5klef8dg" path="res://Font/04B_30__.TTF" id="3_t110k"]
 [ext_resource type="Script" path="res://Scripts/ScoreLabel.gd" id="4_y4jb2"]
 [ext_resource type="PackedScene" uid="uid://qjxom07dcgs0" path="res://Scenes/player.tscn" id="5_dhja4"]
+[ext_resource type="Script" path="res://Scenes/MoneyLabel.gd" id="5_meoyv"]
+[ext_resource type="Texture2D" uid="uid://bbufatl5i2som" path="res://Sprites/Coin.png" id="6_3gtst"]
 [ext_resource type="Texture2D" uid="uid://ddq5mfoof2hge" path="res://Sprites/trawa.png" id="6_mtyge"]
+[ext_resource type="Texture2D" uid="uid://bqawcffceex3g" path="res://UI/FireRate.png" id="7_jkqn8"]
 [ext_resource type="Texture2D" uid="uid://bhvvom8c3cjo7" path="res://Sprites/trawa2.png" id="7_t0ait"]
 [ext_resource type="PackedScene" uid="uid://bwy1fo6n3kiu0" path="res://Scenes/saver.tscn" id="8_g46e7"]
 
@@ -86,6 +89,39 @@ text = "Score: 0"
 script = ExtResource("4_y4jb2")
 metadata/_edit_use_anchors_ = true
 
+[node name="MoneyLabel" type="Label" parent="Camera2D/UserInterface"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+z_index = 5
+texture_filter = 1
+layout_mode = 0
+offset_left = 716.0
+offset_top = -329.0
+offset_right = 772.0
+offset_bottom = -232.0
+theme_override_fonts/font = ExtResource("3_t110k")
+theme_override_font_sizes/font_size = 60
+text = "0"
+script = ExtResource("5_meoyv")
+
+[node name="Coin" type="Sprite2D" parent="Camera2D/UserInterface"]
+z_index = 5
+texture_filter = 1
+position = Vector2(660, -302)
+scale = Vector2(5, 5)
+texture = ExtResource("6_3gtst")
+
+[node name="SpeedButton" type="TextureButton" parent="Camera2D/UserInterface"]
+z_index = 5
+texture_filter = 1
+layout_mode = 0
+offset_left = 573.0
+offset_top = 345.0
+offset_right = 701.0
+offset_bottom = 409.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("7_jkqn8")
+
 [node name="player" parent="." instance=ExtResource("5_dhja4")]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -104,4 +140,5 @@ script = SubResource("GDScript_33lrf")
 [node name="Saver" parent="." instance=ExtResource("8_g46e7")]
 position = Vector2(-512, -102)
 
+[connection signal="pressed" from="Camera2D/UserInterface/SpeedButton" to="player" method="_on_speed_button_pressed"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]

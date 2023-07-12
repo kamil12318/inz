@@ -22,7 +22,7 @@ texture = ExtResource("2_kfjs5")
 position = Vector2(81, 16)
 rotation = 1.5708
 collision_layer = 512
-collision_mask = 768
+collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BulletArea2D"]
 shape = SubResource("CapsuleShape2D_2pelv")

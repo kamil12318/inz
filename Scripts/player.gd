@@ -7,7 +7,7 @@ var FRICTION = 800
 var bullet = preload("res://Scenes/Bullet.tscn")
 var speed = 500
 var bullet_speed = 1000
-var fire_rate = 0.3
+var fire_rate = 0.5
 var can_fire = true
 
 
@@ -62,3 +62,10 @@ func _on_player_hurtbox_area_entered(area):
 	GlobalVar.player_hp -=1
 	print(GlobalVar.player_hp)
 
+
+
+func _on_speed_button_pressed():
+	if GlobalVar.money >= 5:
+		GlobalVar.money -= 5
+		fire_rate -= 0.1
+		print(fire_rate)

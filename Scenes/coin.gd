@@ -13,4 +13,5 @@ func _process(delta):
 
 func _on_area_2d_area_entered(area):
 	queue_free()
-	print("chuj")
+	GlobalVar.money += 1 
+	

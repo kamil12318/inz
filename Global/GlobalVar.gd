@@ -8,3 +8,4 @@ var highscore = 0
 var spawntimer = 0.1
 var onload = 0
 var player_hp = 5 
+var money = 0

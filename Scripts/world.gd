@@ -17,8 +17,9 @@ func _ready():
 	if GlobalVar.onload == 0:
 		GlobalVar.playerscore = 0
 	
-	GlobalVar.spawntimer = 1
+	GlobalVar.spawntimer = 2
 	GlobalVar.player_hp  = 5 
+	GlobalVar.money = 0
 	
 func spawn_enemy():
 	var enemy = load("res://Scenes/enemy.tscn").instantiate()
@@ -34,3 +35,5 @@ func rand_range(min, max):
 	
 func _on_timer_timeout():
 	spawn_enemy()
+
+
