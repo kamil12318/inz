@@ -19,7 +19,7 @@ func _physics_process(delta):
 		velocity = Vector2(target_position * speed)
 		move_and_slide()
 	
-	if enemy_hp == 0:
+	if enemy_hp <= 0:
 		die()
 		
 func die():
@@ -31,7 +31,7 @@ func die():
 		get_parent().add_child(coinInstance)
 		coinInstance.position = position
 	queue_free()
-	GlobalVar.spawntimer /= 1.02
+	GlobalVar.spawntimer /= 1.01
 	GlobalVar.playerscore += 1
 
 func _on_enemy_area_2d_area_entered(area):
