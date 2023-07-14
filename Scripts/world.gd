@@ -18,7 +18,7 @@ func _ready():
 		GlobalVar.playerscore = 0
 	
 	GlobalVar.spawntimer = 2
-	GlobalVar.player_hp  = 5 
+	GlobalVar.player_hp  = 6
 	GlobalVar.money = 0
 	
 func spawn_enemy():

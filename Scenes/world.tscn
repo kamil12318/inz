@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://5x3bamuwabno"]
+[gd_scene load_steps=20 format=3 uid="uid://5x3bamuwabno"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_6xof0"]
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_vuecb"]
+[ext_resource type="Script" path="res://Scenes/UserInterface.gd" id="3_orbsg"]
 [ext_resource type="FontFile" uid="uid://caraa5klef8dg" path="res://Font/04B_30__.TTF" id="3_t110k"]
 [ext_resource type="Script" path="res://Scripts/ScoreLabel.gd" id="4_y4jb2"]
 [ext_resource type="PackedScene" uid="uid://qjxom07dcgs0" path="res://Scenes/player.tscn" id="5_dhja4"]
@@ -13,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bwy1fo6n3kiu0" path="res://Scenes/saver.tscn" id="8_g46e7"]
 [ext_resource type="Texture2D" uid="uid://dvckgnnl3vjrt" path="res://UI/BulletSpeed.png" id="8_kxb8w"]
 [ext_resource type="Script" path="res://Scenes/Hp.gd" id="8_y1wh3"]
+[ext_resource type="Texture2D" uid="uid://byy64pvg6ju4h" path="res://Sprites/HealthBar.png" id="10_naoyg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iq3r7"]
 texture = ExtResource("6_mtyge")
@@ -69,6 +71,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("3_orbsg")
 
 [node name="ScoreLabel" type="Label" parent="Camera2D/UserInterface"]
 z_index = 5
@@ -136,6 +139,7 @@ scale = Vector2(3, 3)
 texture_normal = ExtResource("8_kxb8w")
 
 [node name="Hp" type="Label" parent="Camera2D/UserInterface"]
+visible = false
 z_index = 5
 texture_filter = 1
 layout_mode = 0
@@ -148,6 +152,14 @@ theme_override_fonts/font = ExtResource("3_t110k")
 theme_override_font_sizes/font_size = 60
 text = "HP: 0"
 script = ExtResource("8_y1wh3")
+
+[node name="HealthBar" type="Sprite2D" parent="Camera2D/UserInterface"]
+texture_filter = 1
+position = Vector2(-735, -430)
+scale = Vector2(4, 4)
+texture = ExtResource("10_naoyg")
+hframes = 12
+frame = 5
 
 [node name="player" parent="." instance=ExtResource("5_dhja4")]
 

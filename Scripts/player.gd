@@ -60,7 +60,6 @@ func _physics_process(delta):
 
 func _on_player_hurtbox_area_entered(area):
 	GlobalVar.player_hp -=1
-	print(GlobalVar.player_hp)
 
 
 

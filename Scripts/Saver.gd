@@ -2,7 +2,7 @@ extends Node2D
 
 const SAVE_PATH := "res://test/score.json"
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("save"):
 		save_json()
 		
