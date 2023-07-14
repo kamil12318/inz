@@ -5,7 +5,7 @@ const SPAWN_RADIUS = 1300
 var enemy_scene = preload("res://Scripts/Enemy.gd")
 @onready var timer = get_node("SpawnTimer")
 
-func _process(delta):
+func _process(_delta):
 	timer.wait_time = GlobalVar.spawntimer
 	
 	if Input.is_action_just_pressed("pause"):
@@ -30,8 +30,8 @@ func spawn_enemy():
 	var spawn_position = GlobalVar.playerpositoin + Vector2(cos(spawn_angle), sin(spawn_angle)) * SPAWN_RADIUS
 	enemy.position = spawn_position
 	
-func rand_range(min, max):
-	return randf_range(1000, max)
+func rand_range(_min, _max):
+	return randf_range(1000, _max)
 	
 func _on_timer_timeout():
 	spawn_enemy()

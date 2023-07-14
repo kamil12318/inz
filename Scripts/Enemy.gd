@@ -9,7 +9,7 @@ var enemy_hp = 3
 
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	player_position = player.position
 	target_position = (player_position - position).normalized()
@@ -34,5 +34,5 @@ func die():
 	GlobalVar.spawntimer /= 1.01
 	GlobalVar.playerscore += 1
 
-func _on_enemy_area_2d_area_entered(area):
+func _on_enemy_area_2d_area_entered(_area):
 	enemy_hp -= 1

@@ -7,7 +7,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if GlobalVar.player_hp == 1:
 		$HealthBar.set_frame(0)
 	elif GlobalVar.player_hp == 2:

@@ -11,7 +11,7 @@ var fire_rate = 0.5
 var can_fire = true
 
 
-func _process(delta):
+func _process(_delta):
 
 	GlobalVar.playerpositionx = position.x
 	GlobalVar.playerpositiony = position.y
@@ -26,7 +26,7 @@ func _process(delta):
 		var bullet_instance = bullet.instantiate()
 		bullet_instance.position = get_global_position()
 		bullet_instance.rotation_degrees = rotation_degrees
-		var direction = (cursor_positoin - get_global_position().normalized())
+		var _direction = (cursor_positoin - get_global_position().normalized())
 		bullet_instance.apply_impulse(Vector2(dir*bullet_speed),Vector2())
 		get_tree().get_root().add_child(bullet_instance)
 		can_fire= false
@@ -48,6 +48,7 @@ func _physics_process(delta):
 		MAX_SPEED = MAX_SPEED * 2
 		ACCELERATION = 800
 	if Input.is_action_just_released("run"):
+		@warning_ignore("integer_division")
 		MAX_SPEED = MAX_SPEED / 2
 		ACCELERATION = 500
 
@@ -58,7 +59,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func _on_player_hurtbox_area_entered(area):
+func _on_player_hurtbox_area_entered(_area):
 	GlobalVar.player_hp -=1
 
 
