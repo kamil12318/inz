@@ -7,11 +7,7 @@ var enemy_scene = preload("res://Scripts/Enemy.gd")
 
 func _process(_delta):
 	timer.wait_time = GlobalVar.spawntimer
-	
-	if Input.is_action_just_pressed("pause"):
-		get_tree().paused = true
-	else:
-		get_tree().paused = false
+
 	
 func _ready():
 	if GlobalVar.onload == 0:
