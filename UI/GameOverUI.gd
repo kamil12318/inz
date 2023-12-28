@@ -7,3 +7,10 @@ func _on_texture_button_pressed():
 
 func _on_quit_button_pressed():
 	get_tree().quit()
+	
+func _process(delta):
+	
+		if Input.is_action_just_pressed("exit"):
+			get_tree().quit()
+	
+

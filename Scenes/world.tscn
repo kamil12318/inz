@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://5x3bamuwabno"]
+[gd_scene load_steps=24 format=3 uid="uid://5x3bamuwabno"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_6xof0"]
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_vuecb"]
@@ -13,7 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://bhvvom8c3cjo7" path="res://Sprites/trawa2.png" id="7_t0ait"]
 [ext_resource type="PackedScene" uid="uid://bwy1fo6n3kiu0" path="res://Scenes/saver.tscn" id="8_g46e7"]
 [ext_resource type="Texture2D" uid="uid://dvckgnnl3vjrt" path="res://UI/BulletSpeed.png" id="8_kxb8w"]
+[ext_resource type="Texture2D" uid="uid://d3b24h374v4p" path="res://UI/buttons2/FireRateClick.png" id="9_1yi20"]
+[ext_resource type="Texture2D" uid="uid://dadrqlfo2mee2" path="res://UI/buttons2/FireRateHover.png" id="10_8k4bn"]
 [ext_resource type="Texture2D" uid="uid://byy64pvg6ju4h" path="res://Sprites/HealthBar.png" id="10_naoyg"]
+[ext_resource type="Texture2D" uid="uid://djyca0611v6c3" path="res://UI/buttons2/BulletSpeedClicked.png" id="12_jjld0"]
+[ext_resource type="Texture2D" uid="uid://cotky45h0rgj4" path="res://UI/buttons2/BulletSpeedHover.png" id="13_se5t8"]
 
 [sub_resource type="GDScript" id="GDScript_56mum"]
 
@@ -122,23 +126,27 @@ texture = ExtResource("6_3gtst")
 z_index = 5
 texture_filter = 1
 layout_mode = 0
-offset_left = 573.0
+offset_left = 649.0
 offset_top = 345.0
-offset_right = 701.0
+offset_right = 777.0
 offset_bottom = 409.0
 scale = Vector2(3, 3)
 texture_normal = ExtResource("7_jkqn8")
+texture_pressed = ExtResource("9_1yi20")
+texture_hover = ExtResource("10_8k4bn")
 
 [node name="BulletSpeedButton" type="TextureButton" parent="Camera2D/UserInterface"]
 z_index = 5
 texture_filter = 1
 layout_mode = 0
-offset_left = 187.0
+offset_left = 371.0
 offset_top = 344.0
-offset_right = 315.0
+offset_right = 499.0
 offset_bottom = 408.0
 scale = Vector2(3, 3)
 texture_normal = ExtResource("8_kxb8w")
+texture_pressed = ExtResource("12_jjld0")
+texture_hover = ExtResource("13_se5t8")
 
 [node name="HealthBar" type="Sprite2D" parent="Camera2D/UserInterface"]
 texture_filter = 1
