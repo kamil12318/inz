@@ -1,10 +1,62 @@
-[gd_scene load_steps=4 format=3 uid="uid://cc4inm1kfujuv"]
+[gd_scene load_steps=9 format=3 uid="uid://cc4inm1kfujuv"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_rud4g"]
 [ext_resource type="Texture2D" uid="uid://b1tfch475bafv" path="res://Sprites/enemy1.png" id="2_3n7og"]
+[ext_resource type="Texture2D" uid="uid://b0n6s153wgt3u" path="res://Sprites/blood.png" id="3_7g27s"]
+[ext_resource type="Texture2D" uid="uid://bhd4gc8if1cqt" path="res://Sprites/enemy1dmg1.png" id="3_xs1bi"]
+[ext_resource type="Texture2D" uid="uid://dhvt2aihjmohx" path="res://Sprites/enemy1dmg2.png" id="4_y53b3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wkao6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xs1bi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_y53b3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xs1bi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_y53b3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xs1bi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_y53b3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xs1bi")
+}],
+"loop": false,
+"name": &"hitanim",
+"speed": 20.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hfsk7"]
 size = Vector2(89, 70)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o456p"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 2.0
+emission_ring_radius = 2.0
+emission_ring_inner_radius = 2.0
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(0, 0, 0)
+spread = 47.022
+initial_velocity_min = 89.88
+initial_velocity_max = 235.96
+gravity = Vector3(2, 2, 0)
+linear_accel_min = 6.74
+linear_accel_max = 6.74
+scale_min = 5.0
+scale_max = 8.0
 
 [node name="Enemy" type="CharacterBody2D" groups=["Persist"]]
 script = ExtResource("1_rud4g")
@@ -14,6 +66,11 @@ texture_filter = 1
 rotation = 1.5708
 scale = Vector2(5, 5)
 texture = ExtResource("2_3n7og")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_wkao6")
+animation = &"hitanim"
 
 [node name="EnemyArea2D" type="Area2D" parent="."]
 collision_layer = 1280
@@ -25,5 +82,15 @@ visibility_layer = 512
 position = Vector2(14.5, -1)
 scale = Vector2(1, 1.01511)
 shape = SubResource("RectangleShape2D_hfsk7")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="EnemyArea2D"]
+texture_filter = 1
+position = Vector2(36, 0)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_o456p")
+texture = ExtResource("3_7g27s")
+one_shot = true
+speed_scale = 2.5
+fixed_fps = 60
 
 [connection signal="area_entered" from="EnemyArea2D" to="." method="_on_enemy_area_2d_area_entered"]

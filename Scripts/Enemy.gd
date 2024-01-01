@@ -7,7 +7,11 @@ var target_position
 var coinScene = preload("res://Scenes/coin.tscn")
 var medKitScene = preload("res://Scenes/med_kit.tscn")
 var enemy_hp = 3
+var particles
+var hitanimation
 
+func _ready():
+	particles = $EnemyArea2D/GPUParticles2D
 
 
 func _physics_process(_delta):
@@ -43,3 +47,5 @@ func die():
 
 func _on_enemy_area_2d_area_entered(_area):
 	enemy_hp -= 1
+	particles.emitting = true
+	$Sprite2D/AnimatedSprite2D.play("hitanim")
