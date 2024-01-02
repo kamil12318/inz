@@ -29,14 +29,16 @@ func _physics_process(_delta):
 		
 func die():
 	
-	var randomValue = randf_range(0, 100)  # Wylosuj wartość pomiędzy 0 a 1
+	var randomValue = randf_range(0, 100)  
 
-	if randomValue < 50:  # Zmień wartość 0.5 na dowolny inny próg prawdopodobieństwa
+	if randomValue < 50 && randomValue > 5:  
 		var coinInstance = coinScene.instantiate()
 		get_parent().add_child(coinInstance)
 		coinInstance.position = position
+		coinInstance.play_animation()
+		
 	
-	if randomValue < 5:  # Zmień wartość 0.5 na dowolny inny próg prawdopodobieństwa
+	if randomValue < 5:  
 		var medKitInstance = medKitScene.instantiate()
 		get_parent().add_child(medKitInstance)
 		medKitInstance.position = position
