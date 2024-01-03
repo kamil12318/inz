@@ -6,13 +6,17 @@ var FRICTION = 800
 
 var bullet = preload("res://Scenes/Bullet.tscn")
 var speed = 500
+
+var stamina = 100
+
 var bullet_speed = 800
 var fire_rate = 0.5
 var can_fire = true
+var sprint = false
 
 
 func _process(_delta):
-
+	
 	GlobalVar.playerpositionx = position.x
 	GlobalVar.playerpositiony = position.y
 	GlobalVar.playerpositoin = position
@@ -38,18 +42,33 @@ func _process(_delta):
 		set_process(false)
 		queue_free()
 		
+		
+
+		
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	input_vector = input_vector.normalized()
+	
+	
+	
+	
 
-	if Input.is_action_just_pressed("run"):
-		MAX_SPEED = MAX_SPEED * 2
+	if Input.is_action_just_pressed("run") && stamina > 6:
+		sprint = true
+		MAX_SPEED = 500
 		ACCELERATION = 800
+		while stamina > 5 && sprint == true:
+			stamina = stamina - 5
+			sprint = Input.is_action_pressed("run")  # nei działa do poprawki 
+			await get_tree().create_timer(0.1).timeout
+		sprint = false
+				
 	if Input.is_action_just_released("run"):
+		sprint = false
 		@warning_ignore("integer_division")
-		MAX_SPEED = MAX_SPEED / 2
+		MAX_SPEED = 250
 		ACCELERATION = 500
 
 	if input_vector != Vector2.ZERO:
@@ -57,13 +76,16 @@ func _physics_process(delta):
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	move_and_slide()
-
+	
+	print(stamina)
 
 func _on_player_hurtbox_area_entered(_area):
-	GlobalVar.player_hp -=1
-
-
-
+	while true:
+		GlobalVar.player_hp -=1
+		await get_tree().create_timer(1.0).timeout
+	
+	
+	
 func _on_speed_button_pressed():
 	if GlobalVar.money >= 5:
 		GlobalVar.money -= 5
@@ -71,10 +93,8 @@ func _on_speed_button_pressed():
 		bullet_speed += 50
 		print(fire_rate)
 
-
 func _on_bullet_speed_button_pressed():
 	if GlobalVar.money >= 5:
 		GlobalVar.money -= 5
 		bullet_speed += 1000
-		
-		
+

@@ -44,7 +44,8 @@ func die():
 		medKitInstance.position = position
 			
 	queue_free()
-	GlobalVar.spawntimer /= 1.005
+	if GlobalVar.playerscore > 50:
+		GlobalVar.spawntimer = 1  #1.005
 	GlobalVar.playerscore += 1
 
 func _on_enemy_area_2d_area_entered(_area):

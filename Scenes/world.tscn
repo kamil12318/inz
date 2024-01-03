@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://5x3bamuwabno"]
+[gd_scene load_steps=28 format=3 uid="uid://5x3bamuwabno"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_6xof0"]
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_vuecb"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://djyca0611v6c3" path="res://UI/buttons2/BulletSpeedClicked.png" id="12_jjld0"]
 [ext_resource type="Texture2D" uid="uid://cotky45h0rgj4" path="res://UI/buttons2/BulletSpeedHover.png" id="13_se5t8"]
 [ext_resource type="Texture2D" uid="uid://cfh6syvsax5yb" path="res://Sprites/ground.png" id="18_utpx2"]
+[ext_resource type="PackedScene" uid="uid://dvv1t2i2rocvt" path="res://tree.tscn" id="20_5mv63"]
 
 [sub_resource type="GDScript" id="GDScript_56mum"]
 
@@ -113,11 +114,14 @@ func rand_range(min, max):
 	return randf_range(min, max)
 "
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5nq0f"]
+
 [node name="world" type="Node2D" groups=["Persist"]]
 process_mode = 3
 script = ExtResource("1_6xof0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.8, 0.8)
 rotation_smoothing_enabled = true
 script = ExtResource("2_vuecb")
 
@@ -136,10 +140,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 669.0
-offset_top = -419.0
-offset_right = 730.0
-offset_bottom = -393.0
+offset_left = 723.0
+offset_top = -626.0
+offset_right = 1105.0
+offset_bottom = -565.0
 grow_horizontal = 0
 auto_translate = false
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -155,10 +159,10 @@ self_modulate = Color(0, 0, 0, 1)
 z_index = 5
 texture_filter = 1
 layout_mode = 0
-offset_left = 716.0
-offset_top = -329.0
-offset_right = 772.0
-offset_bottom = -232.0
+offset_left = 1091.0
+offset_top = -536.0
+offset_right = 1147.0
+offset_bottom = -439.0
 theme_override_fonts/font = ExtResource("3_t110k")
 theme_override_font_sizes/font_size = 60
 text = "0"
@@ -167,7 +171,7 @@ script = ExtResource("5_meoyv")
 [node name="Coin" type="Sprite2D" parent="Camera2D/UserInterface"]
 z_index = 5
 texture_filter = 1
-position = Vector2(660, -302)
+position = Vector2(1035, -509)
 scale = Vector2(5, 5)
 texture = ExtResource("6_3gtst")
 
@@ -175,10 +179,10 @@ texture = ExtResource("6_3gtst")
 z_index = 5
 texture_filter = 1
 layout_mode = 0
-offset_left = 649.0
-offset_top = 345.0
-offset_right = 777.0
-offset_bottom = 409.0
+offset_left = 818.0
+offset_top = 457.0
+offset_right = 946.0
+offset_bottom = 521.0
 scale = Vector2(3, 3)
 texture_normal = ExtResource("7_jkqn8")
 texture_pressed = ExtResource("9_1yi20")
@@ -188,10 +192,10 @@ texture_hover = ExtResource("10_8k4bn")
 z_index = 5
 texture_filter = 1
 layout_mode = 0
-offset_left = 371.0
-offset_top = 344.0
-offset_right = 499.0
-offset_bottom = 408.0
+offset_left = 622.0
+offset_top = 457.0
+offset_right = 750.0
+offset_bottom = 521.0
 scale = Vector2(3, 3)
 texture_normal = ExtResource("8_kxb8w")
 texture_pressed = ExtResource("12_jjld0")
@@ -199,7 +203,7 @@ texture_hover = ExtResource("13_se5t8")
 
 [node name="HealthBar" type="Sprite2D" parent="Camera2D/UserInterface"]
 texture_filter = 1
-position = Vector2(-735, -430)
+position = Vector2(-1010, -601)
 scale = Vector2(4, 4)
 texture = ExtResource("10_naoyg")
 hframes = 12
@@ -223,6 +227,17 @@ script = SubResource("GDScript_33lrf")
 
 [node name="Saver" parent="." instance=ExtResource("8_g46e7")]
 position = Vector2(-512, -102)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 12
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_5nq0f")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(303, -426, 308, -198, -265, -206, -270, 370, 589, 374, 592, -433, 628, -433, 627, 432, -308, 431, -305, -271, 270, -269, 268, -431)
+
+[node name="Tree" parent="." instance=ExtResource("20_5mv63")]
+position = Vector2(-574, -255)
 
 [connection signal="pressed" from="Camera2D/UserInterface/SpeedButton" to="player" method="_on_speed_button_pressed"]
 [connection signal="pressed" from="Camera2D/UserInterface/BulletSpeedButton" to="player" method="_on_bullet_speed_button_pressed"]
