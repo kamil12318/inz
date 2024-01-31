@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dxnfq142t1dj3"]
 
 [ext_resource type="Script" path="res://UI/MainMenu.gd" id="1_doq5t"]
-[ext_resource type="Texture2D" uid="uid://coy0qk5887785" path="res://UI/Background.png" id="2_qbpw3"]
+[ext_resource type="Texture2D" uid="uid://ddip5wflrd7y4" path="res://Aseprite/Backbround.png" id="2_38b0i"]
 [ext_resource type="Texture2D" uid="uid://6beadx6pa51s" path="res://UI/NewGameB.png" id="3_2xmgg"]
 [ext_resource type="Texture2D" uid="uid://de4mrakbascnl" path="res://UI/HighScoreB.png" id="4_rch2b"]
 [ext_resource type="Texture2D" uid="uid://fj60jk3yl4gv" path="res://UI/QuitB.png" id="5_0jpfq"]
@@ -21,11 +21,11 @@ script = ExtResource("1_doq5t")
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_left = 1.0
-offset_top = -411.0
-offset_right = 1920.0
-offset_bottom = 1135.0
-texture = ExtResource("2_qbpw3")
+offset_left = -249.0
+offset_top = 5.0
+offset_right = 2175.0
+offset_bottom = 1083.0
+texture = ExtResource("2_38b0i")
 
 [node name="PlayButton" type="TextureButton" parent="."]
 texture_filter = 1

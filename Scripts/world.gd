@@ -1,6 +1,6 @@
 extends Node2D
 
-const SPAWN_RADIUS = 1300
+const SPAWN_RADIUS = 1500
 
 var enemy_scene = preload("res://Scripts/Enemy.gd")
 @onready var timer = get_node("SpawnTimer")

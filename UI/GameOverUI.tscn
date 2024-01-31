@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://vmf2csmu0r2w"]
 
 [ext_resource type="Script" path="res://UI/GameOverUI.gd" id="1_owx4j"]
-[ext_resource type="Texture2D" uid="uid://coy0qk5887785" path="res://UI/Background.png" id="2_e7f42"]
+[ext_resource type="Texture2D" uid="uid://ddip5wflrd7y4" path="res://Aseprite/Backbround.png" id="2_7i10d"]
 [ext_resource type="Script" path="res://UI/GameOverLabel.gd" id="2_vjqt7"]
 [ext_resource type="FontFile" uid="uid://caraa5klef8dg" path="res://Font/04B_30__.TTF" id="3_0ronr"]
 [ext_resource type="Texture2D" uid="uid://c1jh1pxg8jeav" path="res://UI/PlayAgainB.png" id="4_ed7ml"]
@@ -22,11 +22,11 @@ script = ExtResource("1_owx4j")
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_left = -2.0
-offset_top = -209.0
-offset_right = 1922.0
-offset_bottom = 1131.0
-texture = ExtResource("2_e7f42")
+offset_left = -37.0
+offset_top = 1.0
+offset_right = 1944.0
+offset_bottom = 1084.0
+texture = ExtResource("2_7i10d")
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
@@ -43,10 +43,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -372.0
-offset_top = -328.0
-offset_right = -6.0
-offset_bottom = -202.0
+offset_left = -366.0
+offset_top = -261.0
+offset_bottom = -135.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)

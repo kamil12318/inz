@@ -12,8 +12,12 @@ var stamina = 100
 var bullet_speed = 800
 var fire_rate = 0.5
 var can_fire = true
-var sprint = false
+var can_sprint = true
+var is_sprinting
+var sprint_cd
+@onready var timer = get_node("Timer")
 
+var enemy_touching = false
 
 func _process(_delta):
 	
@@ -37,7 +41,7 @@ func _process(_delta):
 		await (get_tree().create_timer(fire_rate).timeout)
 		can_fire = true
 		
-	if GlobalVar.player_hp == 0:
+	if GlobalVar.player_hp == 0 or GlobalVar.base_hp == 0:
 		get_tree().change_scene_to_file("res://UI/GameOverUI.tscn")
 		set_process(false)
 		queue_free()
@@ -52,24 +56,30 @@ func _physics_process(delta):
 	input_vector = input_vector.normalized()
 	
 	
-	
-	
-
-	if Input.is_action_just_pressed("run") && stamina > 6:
-		sprint = true
+		
+	if is_sprinting == true:
 		MAX_SPEED = 500
 		ACCELERATION = 800
-		while stamina > 5 && sprint == true:
-			stamina = stamina - 5
-			sprint = Input.is_action_pressed("run")  # nei działa do poprawki 
-			await get_tree().create_timer(0.1).timeout
-		sprint = false
-				
-	if Input.is_action_just_released("run"):
-		sprint = false
-		@warning_ignore("integer_division")
+	else: 
 		MAX_SPEED = 250
 		ACCELERATION = 500
+		
+	if Input.is_action_pressed("run") && can_sprint == true:
+		is_sprinting = true
+		stamina = stamina - 1
+		if stamina < 20:
+			sprint_cd = true
+		if stamina == 0:
+			can_sprint = false
+			timer.start()
+		
+	else:
+		is_sprinting = false
+		if stamina < 100:
+			stamina = stamina + 1
+		
+	
+	
 
 	if input_vector != Vector2.ZERO:
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
@@ -77,13 +87,12 @@ func _physics_process(delta):
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	move_and_slide()
 	
-	print(stamina)
+	
+
 
 func _on_player_hurtbox_area_entered(_area):
-	while true:
+		await get_tree().create_timer(0.5).timeout
 		GlobalVar.player_hp -=1
-		await get_tree().create_timer(1.0).timeout
-	
 	
 	
 func _on_speed_button_pressed():
@@ -98,3 +107,11 @@ func _on_bullet_speed_button_pressed():
 		GlobalVar.money -= 5
 		bullet_speed += 1000
 
+
+
+func _on_timer_timeout():
+	can_sprint = true
+
+
+func _on_player_hurtbox_area_exited(area):
+	enemy_touching = false

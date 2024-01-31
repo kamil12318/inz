@@ -34,6 +34,8 @@ position = Vector2(4, -10)
 shape = SubResource("CircleShape2D_wa2c6")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
 
 [connection signal="area_entered" from="PlayerHurtbox" to="." method="_on_player_hurtbox_area_entered"]
+[connection signal="area_exited" from="PlayerHurtbox" to="." method="_on_player_hurtbox_area_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

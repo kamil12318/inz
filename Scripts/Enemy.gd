@@ -3,12 +3,16 @@ extends CharacterBody2D
 var speed = 150
 var player_position
 var target_position
+var target2_position
+var base_position
 @onready var player = get_parent().get_node("player")
+@onready var base = get_parent().get_node("Tree")
 var coinScene = preload("res://Scenes/coin.tscn")
 var medKitScene = preload("res://Scenes/med_kit.tscn")
 var enemy_hp = 3
 var particles
 var hitanimation
+
 
 func _ready():
 	particles = $EnemyArea2D/GPUParticles2D
@@ -16,12 +20,18 @@ func _ready():
 
 func _physics_process(_delta):
 	
+	base_position = base.position
 	player_position = player.position
 	target_position = (player_position - position).normalized()
+	target2_position = (base_position - position).normalized()
 	
-	if position.distance_to(player_position) >1:
+	if position.distance_to(player_position) <300:
 		look_at(player_position)
 		velocity = Vector2(target_position * speed)
+		move_and_slide()
+	else:
+		look_at(base_position)
+		velocity = Vector2(target2_position * speed / 2)
 		move_and_slide()
 	
 	if enemy_hp <= 0:
