@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dxnfq142t1dj3"]
+[gd_scene load_steps=8 format=3 uid="uid://dxnfq142t1dj3"]
 
 [ext_resource type="Script" path="res://UI/MainMenu.gd" id="1_doq5t"]
 [ext_resource type="Texture2D" uid="uid://ddip5wflrd7y4" path="res://Aseprite/Backbround.png" id="2_38b0i"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://fj60jk3yl4gv" path="res://UI/QuitB.png" id="5_0jpfq"]
 [ext_resource type="Texture2D" uid="uid://cjdjkwns688tp" path="res://UI/OptionsB.png" id="6_ehfnp"]
 [ext_resource type="Texture2D" uid="uid://o5uw6h7p1pgb" path="res://UI/ContiuneButton.png" id="7_k2kd5"]
-[ext_resource type="PackedScene" uid="uid://bwy1fo6n3kiu0" path="res://Scenes/saver.tscn" id="7_yok5q"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -79,6 +78,7 @@ texture_normal = ExtResource("5_0jpfq")
 stretch_mode = 0
 
 [node name="OptionButton" type="TextureButton" parent="."]
+visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -104,9 +104,6 @@ offset_right = 1348.0
 offset_bottom = 590.0
 texture_normal = ExtResource("7_k2kd5")
 stretch_mode = 0
-
-[node name="Saver" parent="." instance=ExtResource("7_yok5q")]
-position = Vector2(178, 444)
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
