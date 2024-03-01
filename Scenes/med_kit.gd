@@ -6,4 +6,3 @@ func _on_area_2d_area_entered(_area):
 	else:
 		GlobalVar.player_hp = 10
 	queue_free()
-	print(GlobalVar.player_hp)

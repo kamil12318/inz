@@ -28,13 +28,6 @@ offset_right = 1944.0
 offset_bottom = 1084.0
 texture = ExtResource("2_7i10d")
 
-[node name="Panel" type="Panel" parent="."]
-visible = false
-modulate = Color(0.2, 0.027451, 0.0901961, 1)
-layout_mode = 0
-offset_right = 1919.0
-offset_bottom = 1079.0
-
 [node name="Label" type="Label" parent="."]
 texture_filter = 1
 layout_mode = 1
@@ -58,7 +51,7 @@ Current Score: 0
 "
 script = ExtResource("2_vjqt7")
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="PlayAgain" type="TextureButton" parent="."]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 7
@@ -67,8 +60,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -393.5
-offset_top = -420.0
+offset_top = -685.0
 offset_right = 393.5
+offset_bottom = -265.0
 grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("4_ed7ml")
@@ -80,12 +74,12 @@ position = Vector2(401, 964)
 [node name="QuitButton" type="TextureButton" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_left = 1503.0
-offset_top = 56.0
-offset_right = 1631.0
-offset_bottom = 120.0
+offset_left = 764.0
+offset_top = 810.0
+offset_right = 892.0
+offset_bottom = 874.0
 scale = Vector2(3, 3)
 texture_normal = ExtResource("7_wwp4h")
 
-[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="PlayAgain" to="." method="_on_play_again_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

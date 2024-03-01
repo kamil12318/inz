@@ -20,11 +20,13 @@ func _ready():
 func spawn_enemy():
 	var enemy = load("res://Scenes/enemy.tscn").instantiate()
 	enemy.name = "enemy"
-	add_child(enemy)
 	
 	var spawn_angle = randf_range(0, 2 * 3.14)
 	var spawn_position = GlobalVar.playerpositoin + Vector2(cos(spawn_angle), sin(spawn_angle)) * SPAWN_RADIUS
-	enemy.position = spawn_position
+	if spawn_position.x < 2500 and spawn_position.x > -2500 and spawn_position.y < 2500 and spawn_position.y > -2500:
+		enemy.position = spawn_position
+		add_child(enemy)
+	
 	
 func rand_range(_min, _max):
 	return randf_range(1000, _max)

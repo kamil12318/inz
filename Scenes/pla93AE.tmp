@@ -22,7 +22,6 @@ texture = ExtResource("2_fh8rn")
 hframes = 7
 
 [node name="PlayerHurtbox" type="Area2D" parent="."]
-visible = false
 collision_mask = 1025
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtbox"]
@@ -31,7 +30,6 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_vds81")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(4, -10)
 shape = SubResource("CircleShape2D_wa2c6")
 

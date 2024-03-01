@@ -4,17 +4,21 @@ var MAX_SPEED = 250
 var ACCELERATION = 800
 var FRICTION = 800
 
+
+@onready var joystick = $"../Camera2D/UserInterface/Joystick"
+
+
+
 var bullet = preload("res://Scenes/Bullet.tscn")
-var speed = 500
+var speed = 400
 
 var stamina = 100
 
 var bullet_speed = 800
 var fire_rate = 0.5
 var can_fire = true
-var can_sprint = true
-var is_sprinting
-var sprint_cd
+var fire_button = false
+
 @onready var timer = get_node("Timer")
 
 var enemy_touching = false
@@ -24,13 +28,17 @@ func _process(_delta):
 	GlobalVar.playerpositionx = position.x
 	GlobalVar.playerpositiony = position.y
 	GlobalVar.playerpositoin = position
-
-	look_at(get_global_mouse_position())
+	
+	
+	var vector = Vector2(joystick.posVector)
+	var angle = vector.angle()
+	
+	
 	var mouse_pos = get_global_mouse_position()
 	var cursor_positoin = Vector2(mouse_pos.x, mouse_pos.y)
 	var dir = Vector2(cos(rotation), sin(rotation))
 
-	if Input.is_action_pressed("fire") and can_fire:
+	if (Input.is_action_pressed("fire") or fire_button) and can_fire:
 		var bullet_instance = bullet.instantiate()
 		bullet_instance.position = get_global_position()
 		bullet_instance.rotation_degrees = rotation_degrees
@@ -48,43 +56,16 @@ func _process(_delta):
 		
 		
 func _physics_process(delta):
-	var input_vector = Vector2.ZERO
-	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-	input_vector = input_vector.normalized()
 	
+	var direction = joystick.posVector
 	
+	if direction: 
+		velocity = direction * speed
 		
-	if is_sprinting == true:
-		MAX_SPEED = 500
-		ACCELERATION = 800
-	else: 
-		MAX_SPEED = 250
-		ACCELERATION = 500
-		
-	if Input.is_action_pressed("run") && can_sprint == true:
-		is_sprinting = true
-		stamina = stamina - 1
-		if stamina < 20:
-			sprint_cd = true
-		if stamina == 0:
-			can_sprint = false
-			timer.start()
-		
-	else:
-		is_sprinting = false
-		if stamina < 100:
-			stamina = stamina + 1
-		
-	
-	
-
-	if input_vector != Vector2.ZERO:
-		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+	look_at(position + direction)
 	move_and_slide()
-	
 	
 
 
@@ -97,19 +78,25 @@ func _on_speed_button_pressed():
 	if GlobalVar.money >= 5:
 		GlobalVar.money -= 5
 		fire_rate -= 0.05
-		bullet_speed += 50
-		print(fire_rate)
+	
 
 func _on_bullet_speed_button_pressed():
 	if GlobalVar.money >= 5:
 		GlobalVar.money -= 5
-		bullet_speed += 1000
+		bullet_speed += 500
 
-
-
-func _on_timer_timeout():
-	can_sprint = true
 
 
 func _on_player_hurtbox_area_exited(area):
 	enemy_touching = false
+
+
+
+
+
+func _on_fire_button_button_down():
+	fire_button = true
+
+
+func _on_fire_button_button_up():
+	fire_button = false

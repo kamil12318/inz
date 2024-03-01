@@ -76,6 +76,8 @@ texture = ExtResource("2_3n7og")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_wkao6")
 animation = &"hitanim"
+frame = 6
+frame_progress = 1.0
 
 [node name="EnemyArea2D" type="Area2D" parent="."]
 collision_layer = 1408

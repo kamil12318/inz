@@ -28,5 +28,11 @@ func _process(_delta):
 		$HealthBar.set_frame(8)
 	elif GlobalVar.player_hp == 10:
 		$HealthBar.set_frame(9)
-
+	
+	if GlobalVar.base_hp == 3:
+		$baseHP.set_frame(0)
+	elif GlobalVar.base_hp == 2:
+		$baseHP.set_frame(1)
+	elif GlobalVar.base_hp == 1:
+		$baseHP.set_frame(2)
 

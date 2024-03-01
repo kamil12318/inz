@@ -1,5 +1,7 @@
 extends Node2D
 
+var save_path = "user"
+
 func _process(delta):
 		
 	if Input.is_action_just_pressed("pause"):
